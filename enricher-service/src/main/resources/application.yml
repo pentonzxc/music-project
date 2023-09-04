@@ -1,0 +1,27 @@
+localstorage:
+  path: localstorage
+  contentExt: mp3
+  metadataExt: json
+
+aws:
+  config:
+    endpoint: "http://localhost:4566"
+    region: us-west-1
+    secretKey: stub
+    accessKey: stub
+  s3:
+    bucket:
+      file: file-bucket
+
+  sqs:
+    queue:
+      file: file-queue
+server:
+  port: 8081
+
+
+spotify:
+  clientId: 1054711d8c914b97b4268c8e83df19ed
+  clientSecret: 239f5ac039264e7f99f798109d592541
+
+

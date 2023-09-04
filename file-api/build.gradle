@@ -1,0 +1,64 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.8-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.innowise'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+ext {
+    set('springCloudVersion', "2022.0.3")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.apache.camel.springboot:camel-spring-boot-starter:4.0.0-M3'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+    implementation 'com.innowise:localstorage-lib:1.0'
+
+
+
+    implementation 'org.apache.camel:camel-aws2-sqs:4.0.0-M3'
+    implementation 'org.apache.camel:camel-reactor:4.0.0-M3'
+    implementation 'software.amazon.awssdk:sdk-core:2.20.75'
+    implementation 'software.amazon.awssdk:aws-core:2.20.75'
+    implementation 'software.amazon.awssdk:s3:2.20.75'
+    implementation 'software.amazon.awssdk:regions:2.20.75'
+    implementation 'software.amazon.awssdk:sqs:2.20.75'
+
+
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

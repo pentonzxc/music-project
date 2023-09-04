@@ -1,0 +1,26 @@
+server:
+  port: 8086
+
+aws:
+  config:
+    endpoint: "http://localhost:4566"
+    region: us-west-1
+    secretKey: stub
+    accessKey: stub
+  s3:
+    bucket:
+      file: file-bucket
+
+  sqs:
+    queue:
+      file: file-queue
+
+spring:
+  application:
+    name: song-api
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

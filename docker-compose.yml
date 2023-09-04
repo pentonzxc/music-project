@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    network_mode: bridge
+    ports:
+      - '4566-4583:4566-4583'
+      - "8082:8082"
+    environment:
+      - SERVICES=s3,sqs
+      - DATA_DIR=/tmp/localstack/data # This is the where the data will be stored/saved, inside the docker instance
+      - PORT_WEB_UI=8082
+    volumes:
+      - ./localstack/data:/tmp/localstack
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./localstack/bin:/docker-entrypoint-initaws.d

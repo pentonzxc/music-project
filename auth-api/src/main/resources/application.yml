@@ -1,0 +1,20 @@
+jwt:
+  expire-period-seconds: 7200
+  secret-key: The specified key byte array is 192 bits which is not secure enough for any JWT HMAC-SHA algorithm.  The JWT JWA Specification (RFC 7518, Section 3.2) states that keys used with HMAC-SHA algorithms MUST have a size >= 256 bits
+server:
+  port: 8091
+
+
+spring:
+  r2dbc:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+  application:
+    name: auth-api
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
